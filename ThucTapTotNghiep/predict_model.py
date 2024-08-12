@@ -6,9 +6,9 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-model = pickle.load(open('./ThucTapTotNghiep/train_model.pkl', 'rb'))
-preprocessor = pickle.load(open('./ThucTapTotNghiep/preprocessor.pkl', 'rb'))
-
+model = pickle.load(open('train_model.pkl', 'rb'))
+preprocessor = pickle.load(open('preprocessor.pkl', 'rb'))
+# preprocessor = pickle.load(open('./ThucTapTotNghiep/preprocessor.pkl', 'rb'))
 @app.route('/')
 def Home():
     return render_template('./index.html')
@@ -21,26 +21,27 @@ def predict():
     voice_mail_plan = request.form.get('voice_mail_plan')
     number_vmail_messages = int(request.form.get('number_vmail_messages'))
 
-    total_day_minutes = float(request.form.get('total_day_minutes'))
+    total_day_charge = float(request.form.get('total_day_charge'))
     total_day_calls = int(request.form.get('total_day_calls'))
 
-    total_eve_minutes = float(request.form.get('total_eve_minutes'))
+    total_eve_charge = float(request.form.get('total_eve_charge'))
     total_eve_calls = int(request.form.get('total_eve_calls'))
 
-    total_night_minutes = float(request.form.get('total_night_minutes'))
+    total_night_charge = float(request.form.get('total_night_charge'))
     total_night_calls = int(request.form.get('total_night_calls'))
 
-    total_intl_minutes = float(request.form.get('total_intl_minutes'))
+    total_intl_charge = float(request.form.get('total_intl_charge'))
     total_intl_calls = int(request.form.get('total_intl_calls'))
 
     number_customer_service_calls = int(request.form.get('number_customer_service_calls'))
 
-    inputs = inputs = pd.DataFrame(np.array([account_length, international_plan, voice_mail_plan, number_vmail_messages, total_day_minutes
-        , total_day_calls, total_eve_minutes, total_eve_calls,total_night_minutes, total_night_calls,
-        total_intl_minutes, total_intl_calls, number_customer_service_calls]).reshape(1, -1), 
-                                    columns=['account_length', 'international_plan', 'voice_mail_plan', 'number_vmail_messages',
-                                    'total_day_minutes', 'total_day_calls', 'total_eve_minutes','total_eve_calls','total_night_minutes'
-                                    ,'total_night_calls','total_intl_minutes','total_intl_calls','number_customer_service_calls'])
+    inputs = inputs = pd.DataFrame(np.array([account_length, international_plan, voice_mail_plan
+                                             , number_vmail_messages, total_day_charge
+        , total_day_calls, total_eve_charge, total_eve_calls,total_night_charge, total_night_calls,
+        total_intl_charge, total_intl_calls, number_customer_service_calls]).reshape(1, -1), 
+        columns=['account_length', 'international_plan', 'voice_mail_plan', 'number_vmail_messages',
+        'total_day_charge', 'total_day_calls', 'total_eve_charge','total_eve_calls','total_night_charge'
+        ,'total_night_calls','total_intl_charge','total_intl_calls','number_customer_service_calls'])
 
     input_processed = preprocessor.transform(inputs)
 

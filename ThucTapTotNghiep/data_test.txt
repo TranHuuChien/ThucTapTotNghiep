@@ -1,0 +1,41 @@
+ENTRY 1
+Account Length: 107
+International Plan: No
+Voice Mail Plan: Yes
+Number Voice mail Messages: 26
+
+Total Day Charge: 27.47
+Total Day Calls: 123
+
+Total Evenning Charge: 16.62
+Total Evenning Calls: 103
+
+Total Night Charge: 11.45
+Total Night Calls: 103
+
+Total International Charge: 3.6
+Total International Calls: 3
+
+Number Customer Service Calls: 1
+
+
+
+ENTRY 2:
+Account Length: 20
+International Plan: No
+Voice Mail Plan: No
+Number Voice mail Messages: 0
+
+Total Day Charge: 21.95
+Total Day Calls: 137
+
+Total Evenning Charge: 19.42
+Total Evenning Calls: 64
+
+Total Night Charge: 9.43
+Total Night Calls: 64
+
+Total International Charge: 1.54
+Total International Calls: 6
+
+Number Customer Service Calls: 5
